@@ -1,13 +1,13 @@
 package com.simplemobiletools.gallery.pro.helpers
 
 import com.simplemobiletools.commons.helpers.MONTH_SECONDS
-import com.simplemobiletools.commons.helpers.isQPlus
 
 // shared preferences
 const val DIRECTORY_SORT_ORDER = "directory_sort_order"
 const val GROUP_FOLDER_PREFIX = "group_folder_"
 const val VIEW_TYPE_PREFIX = "view_type_folder_"
 const val SHOW_HIDDEN_MEDIA = "show_hidden_media"
+const val SHOW_ALL_FOLDER = "show_all_folders"
 const val TEMPORARILY_SHOW_HIDDEN = "temporarily_show_hidden"
 const val IS_THIRD_PARTY_INTENT = "is_third_party_intent"
 const val AUTOPLAY_VIDEOS = "autoplay_videos"

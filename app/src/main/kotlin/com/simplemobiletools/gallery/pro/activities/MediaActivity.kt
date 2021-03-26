@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.RelativeLayout
 import androidx.appcompat.widget.SearchView
+import androidx.core.content.ContextCompat
 import androidx.core.view.MenuItemCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -257,6 +258,13 @@ class MediaActivity : SimpleActivity(), MediaOperationsListener {
             findItem(R.id.increase_column_count).isVisible = viewType == VIEW_TYPE_GRID && config.mediaColumnCnt < MAX_COLUMN_COUNT
             findItem(R.id.reduce_column_count).isVisible = viewType == VIEW_TYPE_GRID && config.mediaColumnCnt > 1
             findItem(R.id.toggle_filename).isVisible = viewType == VIEW_TYPE_GRID
+
+            if (config.showAllFolder){
+                menu.findItem(R.id.folder_view).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
+                menu.findItem(R.id.folder_view).icon = ContextCompat.getDrawable(applicationContext,R.drawable.ic_folder_multiple_image)
+            }else{
+                menu.findItem(R.id.folder_view).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
+            }
         }
 
         setupSearch(menu)

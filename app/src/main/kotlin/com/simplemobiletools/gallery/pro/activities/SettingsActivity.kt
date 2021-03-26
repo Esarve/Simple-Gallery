@@ -50,6 +50,7 @@ class SettingsActivity : SimpleActivity() {
         setupManageExcludedFolders()
         setupManageHiddenFolders()
         setupShowHiddenItems()
+        setupShowAllFolderView()
         setupAutoplayVideos()
         setupRememberLastVideo()
         setupLoopVideos()
@@ -193,9 +194,27 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
+    private fun setupShowAllFolderView() {
+        settings_show_gallery_view.isChecked = config.showAllFolder
+        settings_show_gallery_views_holder.setOnClickListener {
+            if (config.showAllFolder) {
+                toggleAllFolders()
+            } else {
+                handleHiddenFolderPasswordProtection {
+                    toggleAllFolders()
+                }
+            }
+        }
+    }
+
     private fun toggleHiddenItems() {
         settings_show_hidden_items.toggle()
         config.showHiddenMedia = settings_show_hidden_items.isChecked
+    }
+
+    private fun toggleAllFolders() {
+        settings_show_gallery_view.toggle()
+        config.showAllFolder = settings_show_gallery_view.isChecked
     }
 
     private fun setupAutoplayVideos() {
@@ -632,6 +651,7 @@ class SettingsActivity : SimpleActivity() {
                 put(INCLUDED_FOLDERS, TextUtils.join(",", config.includedFolders))
                 put(EXCLUDED_FOLDERS, TextUtils.join(",", config.excludedFolders))
                 put(SHOW_HIDDEN_MEDIA, config.showHiddenMedia)
+                put(SHOW_ALL_FOLDER, config.showAllFolder)
                 put(FILE_LOADING_PRIORITY, config.fileLoadingPriority)
                 put(AUTOPLAY_VIDEOS, config.autoplayVideos)
                 put(REMEMBER_LAST_VIDEO_POSITION, config.rememberLastVideoPosition)
@@ -773,6 +793,7 @@ class SettingsActivity : SimpleActivity() {
                 INCLUDED_FOLDERS -> config.addIncludedFolders(value.toStringSet())
                 EXCLUDED_FOLDERS -> config.addExcludedFolders(value.toStringSet())
                 SHOW_HIDDEN_MEDIA -> config.showHiddenMedia = value.toBoolean()
+                SHOW_ALL_FOLDER -> config.showAllFolder = value.toBoolean()
                 FILE_LOADING_PRIORITY -> config.fileLoadingPriority = value.toInt()
                 AUTOPLAY_VIDEOS -> config.autoplayVideos = value.toBoolean()
                 REMEMBER_LAST_VIDEO_POSITION -> config.rememberLastVideoPosition = value.toBoolean()

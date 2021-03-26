@@ -18,6 +18,7 @@ import android.widget.FrameLayout
 import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
+import androidx.core.content.ContextCompat
 import androidx.core.view.MenuItemCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
@@ -294,6 +295,16 @@ class MainActivity : SimpleActivity(), DirectoryOperationsListener {
         menu.findItem(R.id.temporarily_show_hidden).isVisible = !config.shouldShowHidden
         menu.findItem(R.id.stop_showing_hidden).isVisible = config.temporarilyShowHidden
 
+        if (config.showAllFolder){
+            menu.findItem(R.id.show_all).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
+            menu.findItem(R.id.show_all).icon = ContextCompat.getDrawable(this,R.drawable.ic_image_multiple)
+/*
+            menu.findItem(R.id.folder_view).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
+            menu.findItem(R.id.folder_view).icon = ContextCompat.getDrawable(this,R.drawable.ic_folder_multiple_image)*/
+        }else{
+            menu.findItem(R.id.show_all).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
+//            menu.findItem(R.id.folder_view).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
+        }
         updateMenuItemColors(menu)
         return true
     }

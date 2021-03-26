@@ -70,6 +70,10 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getBoolean(SHOW_HIDDEN_MEDIA, false)
         set(showHiddenFolders) = prefs.edit().putBoolean(SHOW_HIDDEN_MEDIA, showHiddenFolders).apply()
 
+    var showAllFolder: Boolean
+        get() = prefs.getBoolean(SHOW_ALL_FOLDER, false)
+        set(showAllFolder) = prefs.edit().putBoolean(SHOW_ALL_FOLDER, showAllFolder).apply()
+
     var temporarilyShowHidden: Boolean
         get() = prefs.getBoolean(TEMPORARILY_SHOW_HIDDEN, false)
         set(temporarilyShowHidden) = prefs.edit().putBoolean(TEMPORARILY_SHOW_HIDDEN, temporarilyShowHidden).apply()
