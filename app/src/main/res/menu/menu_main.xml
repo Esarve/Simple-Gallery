@@ -37,7 +37,8 @@
     <item
         android:id="@+id/show_all"
         android:title="@string/show_all"
-        app:showAsAction="never" />
+        android:icon="@drawable/ic_image_multiple"
+        app:showAsAction="always" />
     <item
         android:id="@+id/show_the_recycle_bin"
         android:title="@string/show_the_recycle_bin"
